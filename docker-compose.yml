@@ -3,8 +3,10 @@ version: "2.0"
 services:
   backend:
     image: "checkup-backend:dev"
-    ports: 
-       - "8000:80"
+    ports:
+      - "8000:80"
 
   frontend:
     image: "checkup-frontend:dev"
+    ports:
+      - "80:80"
