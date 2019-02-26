@@ -8,3 +8,10 @@ services:
 
   frontend:
     image: "checkup-frontend:dev"
+  
+  postgres:
+    image: "postgres"
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db:/var/lib/postgresql/data
