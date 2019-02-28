@@ -1,12 +1,15 @@
 package ru.hh.school.checkup.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 import java.util.Objects;
 
-@XmlRootElement
+@Entity
 public class Todo {
 
+    @Id
     private String id;
 
     private String title;
