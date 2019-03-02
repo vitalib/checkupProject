@@ -1,7 +1,10 @@
-FROM azul/zulu-openjdk-alpine:11
+FROM openjdk:11.0-jdk-oracle
 
 WORKDIR /app
 
 COPY . /app
 
-CMD if test ! -e code.java; then exit 3; fi; if test $(cat out.txt) = $(java code.java); then exit 0; else exit 4; fi
+CMD if test ! -e data/code.java; then exit 3; fi; \
+	javac -d . data/code.java; \
+	cp data/in.txt . ; \
+	if test $(cat data/out.txt) = $(java Code); then exit 0; else exit 4; fi

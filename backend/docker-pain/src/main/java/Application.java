@@ -13,10 +13,12 @@ public class Application {
     Volume dataDirVolume = new Volume("/app/data");
     CreateContainerResponse container = dockerClient.createContainerCmd("py_image")
     //CreateContainerResponse container = dockerClient.createContainerCmd("java_image")
-        .withMemory(memSize)
-        .withBinds(new Bind(pwd + "/docker-images/py_container/py_data", dataDirVolume))
-        //.withBinds(new Bind(pwd + "/docker-images/java_container/java_data", dataDirVolume))
-        .exec();
+    //CreateContainerResponse container = dockerClient.createContainerCmd("js_image")
+      .withMemory(memSize)
+      .withBinds(new Bind(pwd + "/../docker-images/py_container/py_data", dataDirVolume))
+      //.withBinds(new Bind(pwd + "/../docker-images/java_container/java_data", dataDirVolume))
+      //.withBinds(new Bind(pwd + "/../docker-images/js_container/js_data", dataDirVolume))
+      .exec();
 
     dockerClient.startContainerCmd(container.getId()).exec();
 
@@ -24,9 +26,11 @@ public class Application {
       .exec(new WaitContainerResultCallback())
       .awaitStatusCode();
     long finish = System.currentTimeMillis();
-    System.out.println(finish - start);
+
+    dockerClient.removeContainerCmd(container.getId()).exec();
+
+    System.out.println((finish - start)/1000 + "s");
     System.out.println(code);
 
   }
 }
-
