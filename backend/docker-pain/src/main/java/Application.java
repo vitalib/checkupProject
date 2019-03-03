@@ -6,7 +6,6 @@ import com.github.dockerjava.core.command.WaitContainerResultCallback;
 
 public class Application {
   public static void main(String[] args) {
-    long start = System.currentTimeMillis();
     DockerClient dockerClient = DockerClientBuilder.getInstance().build();
     Long memSize = new Long(5000000);
     String pwd = System.getProperty("user.dir");
@@ -20,6 +19,7 @@ public class Application {
       //.withBinds(new Bind(pwd + "/../docker-images/js_container/js_data", dataDirVolume))
       .exec();
 
+    long start = System.currentTimeMillis();
     dockerClient.startContainerCmd(container.getId()).exec();
 
     int code = dockerClient.waitContainerCmd(container.getId())
