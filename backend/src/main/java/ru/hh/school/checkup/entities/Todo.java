@@ -2,11 +2,13 @@ package ru.hh.school.checkup.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 import java.util.Objects;
 
 @Entity
+@Table(name="todo")
 public class Todo {
 
     @Id

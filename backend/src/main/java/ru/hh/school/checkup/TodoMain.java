@@ -3,6 +3,8 @@ package ru.hh.school.checkup;
 import ru.hh.school.checkup.filters.CORSResponseFilter;
 import ru.hh.nab.starter.NabApplication;
 
+import java.nio.file.Paths;
+
 public class TodoMain {
 
   public static void main(String[] args) {
