@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class TodoDAOInMemory implements TodoDAOInterface {
+public class TodoDAOInMemory implements TodoDAO {
 
     private static int counter = 0;
     private List<Todo> todos = new ArrayList<>();

@@ -5,7 +5,7 @@ import ru.hh.school.checkup.entities.Todo;
 
 import java.util.List;
 
-public interface TodoDAOInterface {
+public interface TodoDAO {
 
     public Todo save(TodoDTO todoDTO);
 
