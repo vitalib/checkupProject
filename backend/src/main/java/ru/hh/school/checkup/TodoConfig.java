@@ -11,7 +11,6 @@ import ru.hh.nab.hibernate.NabHibernateProdConfig;
 import ru.hh.nab.starter.NabProdConfig;
 import ru.hh.school.checkup.dao.TodoDAO;
 import ru.hh.school.checkup.dao.TodoDAOInDB;
-import ru.hh.school.checkup.dao.TodoDAOInMemory;
 import ru.hh.school.checkup.entities.Todo;
 import ru.hh.school.checkup.services.TodoService;
 

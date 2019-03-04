@@ -16,9 +16,6 @@ public class TodoDAOInDB implements TodoDAO {
     @Inject
     SessionFactory sessionFactory;
 
-    private static int counter = 0;
-
-    @Inject
     public TodoDAOInDB() {
 
     }
@@ -29,24 +26,31 @@ public class TodoDAOInDB implements TodoDAO {
         BeanUtils.copyProperties(todoDTO, todo);
         todo.setCompleted(false);
         todo.setCreatedAt(new Date());
-        todo.setId(Integer.toString(counter++));
         sessionFactory.getCurrentSession().persist(todo);
         return todo;
     }
 
     @Override
     public void clearAll() {
-
+        sessionFactory.getCurrentSession().createQuery("DELETE FROM Todo")
+                .executeUpdate();
     }
 
     @Override
-    public Todo getById(String id) {
+    public Todo getById(Integer id) {
         return sessionFactory.getCurrentSession().get(Todo.class, id);
     }
 
     @Override
-    public Todo deleteById(String id) {
-        return null;
+    public Todo deleteById(Integer id) {
+        Todo todo = getById(id);
+        if (todo == null) {
+            return null;
+        }
+        sessionFactory.getCurrentSession().createQuery("DELETE from Todo WHERE id = :id")
+                .setParameter("id", id)
+                .executeUpdate();
+        return todo;
     }
 
     @Override
@@ -56,7 +60,14 @@ public class TodoDAOInDB implements TodoDAO {
     }
 
     @Override
-    public Todo updateById(String id, TodoDTO todoDTO) {
-        return null;
+    public Todo updateById(Integer id, TodoDTO todoDTO) {
+        Todo todo = getById(id);
+        if (todo == null) {
+            return null;
+        }
+        BeanUtils.copyProperties(todoDTO, todo);
+        todo.setId(id);
+        sessionFactory.getCurrentSession().update(todo);
+        return todo;
     }
 }

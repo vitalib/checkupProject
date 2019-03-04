@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class TodoDTO {
 
     private String title;
-    private String id;
+    private Integer id;
     private Boolean completed;
 
     public TodoDTO(Todo todo) {
@@ -26,7 +26,7 @@ public class TodoDTO {
         this.title = title;
     }
 
-    public TodoDTO(String title, String id, Boolean completed) {
+    public TodoDTO(String title, Integer id, Boolean completed) {
         this.title = title;
         this.id = id;
         this.completed = completed;
@@ -40,11 +40,11 @@ public class TodoDTO {
         this.title = title;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -3,6 +3,7 @@ package ru.hh.school.checkup;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.context.ContextConfiguration;
+import ru.hh.school.checkup.dao.TodoDAO;
 import ru.hh.school.checkup.dao.TodoDAOInMemory;
 import ru.hh.school.checkup.dto.TodoDTO;
 import ru.hh.school.checkup.entities.Todo;
@@ -24,7 +25,7 @@ import static org.junit.Assert.assertThat;
 public class TodoResourceTest extends NabTestBase {
 
   @Inject
-  TodoDAOInMemory todoDAOInMemory;
+  TodoDAO todoDAOInMemory;
 
   @Inject
   TodoService todoService;
@@ -84,7 +85,7 @@ public class TodoResourceTest extends NabTestBase {
   public void throwExceptionWhenIncorrectIdPassed() {
     todoService.save(new TodoDTO("joker"));
     todoService.save(new TodoDTO("joker2"));
-    todoService.findById("invalid");
+    todoService.findById(345345);
   }
 
 

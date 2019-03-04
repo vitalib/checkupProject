@@ -45,7 +45,7 @@ public class TodoResource {
     @Produces(MediaType.APPLICATION_JSON)
     @GET
     @Path("/todos/{id}")
-    public Response getTodoById(@PathParam("id") String id) {
+    public Response getTodoById(@PathParam("id") Integer id) {
         return Response.ok()
                 .entity(todoService.findById(id))
                 .build();
@@ -56,7 +56,7 @@ public class TodoResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @PUT
     @Path("/todos/{id}")
-    public Response updateTodo(@PathParam("id") String id, TodoDTO todo) {
+    public Response updateTodo(@PathParam("id") Integer id, TodoDTO todo) {
         TodoDTO updatedTodoDTO = todoService.update(id, todo);
         return Response.ok()
                 .entity(updatedTodoDTO)
@@ -65,7 +65,7 @@ public class TodoResource {
 
     @DELETE
     @Path("/todos/{id}")
-    public Response deleteTodo(@PathParam("id") String id) {
+    public Response deleteTodo(@PathParam("id") Integer id) {
         todoService.deleteById(id);
         return Response.ok().build();
     }

@@ -2,7 +2,6 @@ package ru.hh.school.checkup.services;
 
 import org.springframework.beans.BeanUtils;
 import ru.hh.school.checkup.dao.TodoDAO;
-import ru.hh.school.checkup.dao.TodoDAOInMemory;
 import ru.hh.school.checkup.dto.TodoDTO;
 import ru.hh.school.checkup.entities.Todo;
 import ru.hh.school.checkup.exceptions.TodoNotFoundException;
@@ -28,7 +27,7 @@ public class TodoService {
     }
 
     @Transactional
-    public TodoDTO findById(String id) {
+    public TodoDTO findById(Integer id) {
         Todo todo = todoDAO.getById(id);
         if (todo == null) {
             throw new TodoNotFoundException(String.format("Todo with id = %s does not exists", id));
@@ -40,7 +39,7 @@ public class TodoService {
     }
 
     @Transactional
-    public TodoDTO update(String id, TodoDTO todoDTO) {
+    public TodoDTO update(Integer id, TodoDTO todoDTO) {
         Todo updatedTodo = todoDAO.updateById(id, todoDTO);
         if (updatedTodo == null) {
             throw new TodoNotFoundException(String.format("Todo with id = %s does not exists", id));
@@ -50,7 +49,7 @@ public class TodoService {
     }
 
     @Transactional
-    public void deleteById(String id) {
+    public void deleteById(Integer id) {
         Todo todo = todoDAO.deleteById(id);
         if (todo == null) {
             throw new TodoNotFoundException(String.format("Todo with id = %s does not exists", id));

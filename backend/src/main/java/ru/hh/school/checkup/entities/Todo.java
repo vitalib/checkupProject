@@ -1,8 +1,6 @@
 package ru.hh.school.checkup.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 import java.util.Objects;
@@ -12,12 +10,17 @@ import java.util.Objects;
 public class Todo {
 
     @Id
-    private String id;
+    @Column(name="id")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer id;
 
+    @Column(name="title")
     private String title;
 
+    @Column(name="completed")
     private Boolean completed = false;
 
+    @Column(name="created_at")
     private Date createdAt = new Date();
 
     public Todo() {
@@ -28,11 +31,11 @@ public class Todo {
         this.title = title;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

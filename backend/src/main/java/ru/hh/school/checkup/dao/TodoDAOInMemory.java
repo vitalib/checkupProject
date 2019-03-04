@@ -14,8 +14,9 @@ public class TodoDAOInMemory implements TodoDAO {
     private List<Todo> todos = new ArrayList<>();
 
     @Override
-    public Todo getById(String id) {
-        return todos.stream().filter(todo -> id.equals(todo.getId())).findFirst().orElse(null);
+    public Todo getById(Integer idInt) {
+        return todos.stream().filter(todo -> idInt == todo.getId())
+                .findFirst().orElse(null);
     }
 
     @Override
@@ -24,14 +25,15 @@ public class TodoDAOInMemory implements TodoDAO {
     }
 
     @Override
-    public Todo updateById(String id, TodoDTO todoDTO) {
-        Todo savedTodo = getById(id);
+    public Todo updateById(Integer idInt, TodoDTO todoDTO) {
+        String id = idInt.toString();
+        Todo savedTodo = getById(idInt);
         if (savedTodo == null) {
             return null;
         }
         int index = todos.indexOf(savedTodo);
         BeanUtils.copyProperties(todoDTO, savedTodo);
-        savedTodo.setId(id);
+        savedTodo.setId(idInt);
         todos.set(index, savedTodo);
         return savedTodo;
     }
@@ -43,7 +45,7 @@ public class TodoDAOInMemory implements TodoDAO {
         BeanUtils.copyProperties(todoDTO, todo);
         todo.setCompleted(false);
         todo.setCreatedAt(new Date());
-        todo.setId(Integer.toString(counter++));
+        todo.setId(counter++);
         todos.add(todo);
         return todo;
     }
@@ -55,7 +57,7 @@ public class TodoDAOInMemory implements TodoDAO {
     }
 
     @Override
-    public Todo deleteById(String id) {
+    public Todo deleteById(Integer id) {
         Todo todo = getById(id);
         if (todo == null) {
             return null;

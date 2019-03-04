@@ -11,11 +11,11 @@ public interface TodoDAO {
 
     public void clearAll();
 
-    public Todo getById(String id);
+    public Todo getById(Integer id);
 
-    public Todo deleteById(String id);
+    public Todo deleteById(Integer id);
 
     public List<Todo> getAll();
 
-    public Todo updateById(String id, TodoDTO todoDTO);
+    public Todo updateById(Integer id, TodoDTO todoDTO);
 }
