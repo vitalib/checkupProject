@@ -9,8 +9,4 @@ import ru.hh.school.checkup.resources.TodoResource;
 @Configuration
 @Import({TodoResource.class, CORSResponseFilter.class})
 public class TodoJerseyConfig {
-    @Bean
-    CORSResponseFilter corsResponseFilter() {
-        return new CORSResponseFilter();
-    }
 }

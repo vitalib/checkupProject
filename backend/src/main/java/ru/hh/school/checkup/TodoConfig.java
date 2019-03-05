@@ -10,7 +10,6 @@ import ru.hh.nab.hibernate.NabHibernateCommonConfig;
 import ru.hh.nab.hibernate.NabHibernateProdConfig;
 import ru.hh.nab.starter.NabProdConfig;
 import ru.hh.school.checkup.dao.TodoDAO;
-import ru.hh.school.checkup.dao.TodoDAOInDB;
 import ru.hh.school.checkup.entities.Todo;
 import ru.hh.school.checkup.services.TodoService;
 
@@ -30,18 +29,13 @@ public class TodoConfig {
     }
 
     @Bean
-    String serviceName() {
-        return "checkup";
-    }
-
-    @Bean
     DataSource dataSource(DataSourceFactory dataSourceFactory, FileSettings fileSettings) {
         return dataSourceFactory.create("master", false, fileSettings);
     }
 
     @Bean
     public TodoDAO todoDAO() {
-        return new TodoDAOInDB();
+        return new TodoDAO();
     }
 
     @Bean
