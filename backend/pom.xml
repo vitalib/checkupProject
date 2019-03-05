@@ -133,7 +133,7 @@
                     <systemProperties>
                         <systemProperty>
                             <key>settingsDir</key>
-                            <value>${basedir}/src/main/resources</value>
+                            <value>${basedir}/src/etc</value>
                         </systemProperty>
                     </systemProperties>
                     <mainClass>ru.hh.school.checkup.TodoMain</mainClass>
@@ -161,7 +161,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <systemPropertyVariables>
-                        <settingsDir>${basedir}/src/etc/todo</settingsDir>
+                        <settingsDir>${basedir}/src/etc</settingsDir>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
