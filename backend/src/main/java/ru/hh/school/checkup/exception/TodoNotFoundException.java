@@ -1,4 +1,4 @@
-package ru.hh.school.checkup.exceptions;
+package ru.hh.school.checkup.exception;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;

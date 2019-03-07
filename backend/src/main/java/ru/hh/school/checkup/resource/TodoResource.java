@@ -1,7 +1,7 @@
-package ru.hh.school.checkup.resources;
+package ru.hh.school.checkup.resource;
 
 import ru.hh.school.checkup.dto.TodoDTO;
-import ru.hh.school.checkup.services.TodoService;
+import ru.hh.school.checkup.service.TodoService;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;

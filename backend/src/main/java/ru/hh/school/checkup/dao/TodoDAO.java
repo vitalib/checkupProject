@@ -4,9 +4,10 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.BeanUtils;
 import ru.hh.school.checkup.dto.TodoDTO;
-import ru.hh.school.checkup.entities.Todo;
+import ru.hh.school.checkup.entity.Todo;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class TodoDAO {
 
     }
 
+    @Transactional
     public Todo save(TodoDTO todoDTO) {
         Todo todo = new Todo();
         BeanUtils.copyProperties(todoDTO, todo);
@@ -29,6 +31,7 @@ public class TodoDAO {
         return todo;
     }
 
+    @Transactional
     public void clearAll() {
         sessionFactory.getCurrentSession().createQuery("DELETE FROM Todo")
                 .executeUpdate();

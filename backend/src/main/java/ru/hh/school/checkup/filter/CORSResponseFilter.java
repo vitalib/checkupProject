@@ -1,4 +1,4 @@
-package ru.hh.school.checkup.filters;
+package ru.hh.school.checkup.filter;
 
 import java.io.IOException;
 

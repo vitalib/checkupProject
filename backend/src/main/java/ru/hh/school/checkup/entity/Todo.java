@@ -1,7 +1,6 @@
-package ru.hh.school.checkup.entities;
+package ru.hh.school.checkup.entity;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 import java.util.Objects;
 

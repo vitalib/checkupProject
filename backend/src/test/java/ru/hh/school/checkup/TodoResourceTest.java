@@ -1,17 +1,18 @@
 package ru.hh.school.checkup;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestExecutionListeners;
+import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import ru.hh.school.checkup.dao.TodoDAO;
 import ru.hh.school.checkup.dto.TodoDTO;
-import ru.hh.school.checkup.entities.Todo;
-import ru.hh.school.checkup.exceptions.TodoNotFoundException;
-import ru.hh.school.checkup.services.TodoService;
+import ru.hh.school.checkup.entity.Todo;
+import ru.hh.school.checkup.exception.TodoNotFoundException;
+import ru.hh.school.checkup.service.TodoService;
 import ru.hh.nab.starter.NabApplication;
 import ru.hh.nab.testbase.NabTestBase;
-import ru.hh.school.checkup.resources.TodoResource;
+import ru.hh.school.checkup.resource.TodoResource;
 
 import javax.inject.Inject;
 import javax.ws.rs.client.Entity;
@@ -21,12 +22,13 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
-@Ignore
-@ContextConfiguration(classes = TodoTestConfig.class)
+
+@ContextConfiguration(classes = TestConfig.class)
+@TestExecutionListeners(TransactionalTestExecutionListener.class)
 public class TodoResourceTest extends NabTestBase {
 
   @Inject
-  TodoDAO todoDAOInMemory;
+  TodoDAO todoDAO;
 
   @Inject
   TodoService todoService;
@@ -34,7 +36,7 @@ public class TodoResourceTest extends NabTestBase {
 
   @Before
   public void setUp() {
-    todoDAOInMemory.clearAll();
+    todoDAO.clearAll();
   }
 
   @Test
@@ -55,7 +57,7 @@ public class TodoResourceTest extends NabTestBase {
 
   @Test
   public void resourceGetSingleTodo() {
-    Todo newTodo = todoDAOInMemory.save(new TodoDTO("kuku"));
+    Todo newTodo = todoDAO.save(new TodoDTO("kuku"));
     Response response = createRequest("/api/todos/" + newTodo.getId()).get();
     assertThat(response.readEntity(String.class), containsString("kuku"));
   }

@@ -1,10 +1,10 @@
-package ru.hh.school.checkup.services;
+package ru.hh.school.checkup.service;
 
 import org.springframework.beans.BeanUtils;
 import ru.hh.school.checkup.dao.TodoDAO;
 import ru.hh.school.checkup.dto.TodoDTO;
-import ru.hh.school.checkup.entities.Todo;
-import ru.hh.school.checkup.exceptions.TodoNotFoundException;
+import ru.hh.school.checkup.entity.Todo;
+import ru.hh.school.checkup.exception.TodoNotFoundException;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;

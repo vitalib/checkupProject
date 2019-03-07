@@ -1,10 +1,8 @@
 package ru.hh.school.checkup;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import ru.hh.school.checkup.filters.CORSResponseFilter;
-import ru.hh.school.checkup.resources.TodoResource;
+import ru.hh.school.checkup.resource.TodoResource;
 
 @Configuration
 @Import({TodoResource.class})

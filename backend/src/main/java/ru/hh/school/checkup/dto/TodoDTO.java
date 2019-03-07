@@ -2,7 +2,7 @@ package ru.hh.school.checkup.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.beans.BeanUtils;
-import ru.hh.school.checkup.entities.Todo;
+import ru.hh.school.checkup.entity.Todo;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

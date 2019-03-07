@@ -1,6 +1,6 @@
 package ru.hh.school.checkup;
 
-import ru.hh.school.checkup.filters.CORSResponseFilter;
+import ru.hh.school.checkup.filter.CORSResponseFilter;
 import ru.hh.nab.starter.NabApplication;
 
 public class Main {
