@@ -38,7 +38,7 @@ public class Application {
     }
     long finish = System.currentTimeMillis();
 
-    dockerClient.removeContainerCmd(container.getId()).exec();
+    //dockerClient.removeContainerCmd(container.getId()).exec();
 
     System.out.println((finish - start)/1000 + "s");
     System.out.println(code);
