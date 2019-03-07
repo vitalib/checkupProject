@@ -5,6 +5,6 @@ COPY src /usr/src/checkup/src
 COPY pom.xml /usr/src/checkup
 
 WORKDIR /usr/src/checkup
-RUN mvn clean install
+RUN mvn clean install -DskipTests
  
 CMD ["mvn", "exec:java"]
