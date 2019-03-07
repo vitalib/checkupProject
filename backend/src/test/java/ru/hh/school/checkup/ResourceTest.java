@@ -25,7 +25,7 @@ import static org.junit.Assert.assertThat;
 
 @ContextConfiguration(classes = TestConfig.class)
 @TestExecutionListeners(TransactionalTestExecutionListener.class)
-public class TodoResourceTest extends NabTestBase {
+public class ResourceTest extends NabTestBase {
 
   @Inject
   TodoDAO todoDAO;
