@@ -130,7 +130,7 @@
                             <value>${basedir}/src/etc</value>
                         </systemProperty>
                     </systemProperties>
-                    <mainClass>ru.hh.school.checkup.TodoMain</mainClass>
+                    <mainClass>ru.hh.school.checkup.Main</mainClass>
                 </configuration>
             </plugin>
        </plugins>

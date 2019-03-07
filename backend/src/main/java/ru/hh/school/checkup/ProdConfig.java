@@ -13,34 +13,18 @@ import ru.hh.school.checkup.dao.TodoDAO;
 import ru.hh.school.checkup.entities.Todo;
 import ru.hh.school.checkup.services.TodoService;
 
-
 import javax.sql.DataSource;
 
 
 @Configuration
-@Import({NabProdConfig.class, NabHibernateProdConfig.class, NabHibernateCommonConfig.class})
-public class TodoConfig {
-
-    @Bean
-    MappingConfig mappingConfig() {
-        return new MappingConfig(
-            Todo.class
-        );
-    }
+@Import({CommonConfig.class,
+         NabProdConfig.class,
+         NabHibernateProdConfig.class})
+public class ProdConfig {
 
     @Bean
     DataSource dataSource(DataSourceFactory dataSourceFactory, FileSettings fileSettings) {
         return dataSourceFactory.create("master", false, fileSettings);
-    }
-
-    @Bean
-    public TodoDAO todoDAO() {
-        return new TodoDAO();
-    }
-
-    @Bean
-    public TodoService todoService(){
-        return new TodoService();
     }
 
 }

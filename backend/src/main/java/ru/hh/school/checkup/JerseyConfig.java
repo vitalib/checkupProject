@@ -7,6 +7,6 @@ import ru.hh.school.checkup.filters.CORSResponseFilter;
 import ru.hh.school.checkup.resources.TodoResource;
 
 @Configuration
-@Import({TodoResource.class, CORSResponseFilter.class})
-public class TodoJerseyConfig {
+@Import({TodoResource.class})
+public class JerseyConfig {
 }
