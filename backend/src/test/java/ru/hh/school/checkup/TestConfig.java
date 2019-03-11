@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Map;
 import java.util.Properties;
-import java.util.function.Function;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.io.ClassPathResource;
 import ru.hh.metrics.StatsDSender;
@@ -18,7 +17,6 @@ import ru.hh.nab.datasource.DataSourceType;
 import ru.hh.nab.datasource.monitoring.MetricsTrackerFactoryProvider;
 import ru.hh.nab.testbase.hibernate.NabHibernateTestBaseConfig;
 import ru.hh.nab.testbase.postgres.embedded.EmbeddedPostgresDataSourceFactory;
-import ru.hh.school.checkup.service.TodoService;
 import ru.hh.nab.testbase.NabTestConfig;
 
 import javax.sql.DataSource;
