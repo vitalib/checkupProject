@@ -89,7 +89,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <database.url>jdbc:postgresql://localhost:5432/checkup_project</database.url>
+                <database.url>jdbc:postgresql://localhost:40432/checkup_project</database.url>
             </properties>
         </profile>
         <profile>
