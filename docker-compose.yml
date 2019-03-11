@@ -1,18 +1,13 @@
-version: "2.0"
+version: "3.0"
 
 services:
   backend:
     image: "checkup-backend:dev"
-    ports: 
+    ports:
        - "8000:9999"
     depends_on:
       - postgres
 
-  frontend:
-    image: "checkup-frontend:dev"
-    depends_on:
-      - backend
-  
   postgres:
     image: "postgres"
     restart: always
@@ -20,4 +15,8 @@ services:
       - "5432:5432"
     volumes:
       - /home/deployer/checkup/db:/var/lib/postgresql/data
-    #  - $HOME/docker/volumes/postgres:/var/lib/postgresql/data
+
+  frontend:
+    image: "checkup-frontend:dev"
+    ports:
+      - "80:80"
