@@ -70,8 +70,25 @@
             <version>${nab.version}</version>
         </dependency>
     </dependencies>
+        <profiles>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <jdbc.url>${env.DATABASE_URL}</jdbc.url>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+    </profiles>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/etc</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -115,7 +132,7 @@
                     <systemProperties>
                         <systemProperty>
                             <key>settingsDir</key>
-                            <value>${basedir}/src/etc</value>
+                            <value>${env.SETTINGS_DIR}</value>
                         </systemProperty>
                     </systemProperties>
                     <mainClass>ru.hh.school.checkup.Main</mainClass>
