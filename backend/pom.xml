@@ -82,8 +82,31 @@
             <version>${nab.version}</version>
         </dependency>
     </dependencies>
+    <profiles>
+        <profile>
+            <id>development</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <database.url>jdbc:postgresql://localhost:5432/checkup_project</database.url>
+            </properties>
+        </profile>
+        <profile>
+            <id>productionServer</id>
+            <properties>
+                <database.url>jdbc:postgresql://postgres:5432/checkup_project</database.url>
+            </properties>
+        </profile>
+    </profiles>
 
     <build>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/etc</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -127,7 +150,7 @@
                     <systemProperties>
                         <systemProperty>
                             <key>settingsDir</key>
-                            <value>${basedir}/src/etc</value>
+                            <value>${basedir}/target/classes</value>
                         </systemProperty>
                     </systemProperties>
                     <mainClass>ru.hh.school.checkup.Main</mainClass>

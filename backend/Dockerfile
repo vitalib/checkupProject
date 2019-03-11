@@ -5,6 +5,6 @@ COPY src /usr/src/checkup/src
 COPY pom.xml /usr/src/checkup
 
 WORKDIR /usr/src/checkup
-RUN mvn clean install -DskipTests
+RUN mvn -PproductionServer clean install -DskipTests
  
 CMD ["mvn", "exec:java"]
