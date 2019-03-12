@@ -2,11 +2,11 @@ FROM openjdk:11.0-jdk-oracle
 
 WORKDIR /app
 
-CMD if test ! -e data/code.java; then exit 4; fi; \
-	javac -d . data/code.java; \
+CMD if test ! -e data/Code.java; then exit 4; fi; \
+	javac -d . data/Code.java; \
 	if test $? != 0; then exit 5; fi; \
 	cp data/in.txt . ; \
-	java -Xms20m -XX:+ExitOnOutOfMemoryError Code > result.txt; \
+	java -XX:+ExitOnOutOfMemoryError Code > result.txt; \
 	exitCode=$?; \
 	if test $exitCode = 3; then exit 8; fi; \
 	if test $exitCode != 0; then exit 6; fi; \
