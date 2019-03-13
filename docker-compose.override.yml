@@ -4,6 +4,8 @@ services:
   backend:
     build:
       context: ./backend
+      args:
+        - DB_URL=${DB_URL}
     image: "checkup-backend:dev"
 
   frontend:

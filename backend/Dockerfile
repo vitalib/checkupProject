@@ -1,5 +1,6 @@
 FROM maven:3-jdk-11-slim
 
+ARG DB_URL
 
 COPY src /usr/src/checkup/src
 COPY pom.xml /usr/src/checkup

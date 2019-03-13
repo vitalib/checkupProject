@@ -83,7 +83,7 @@
         <profile>
             <id>productionServer</id>
             <properties>
-                <database.url>jdbc:postgresql://postgres:5432/checkup_project</database.url>
+                <database.url>${env.DB_URL}</database.url>
             </properties>
         </profile>
     </profiles>
