@@ -6,9 +6,11 @@ addons:
 services:
   - docker
 
-sudo: required
+dist: trusty
 
-language: generic
+language: java
+jdk:
+  - openjdk11
 
 before_install:
   - export SSHPASS=$DEPLOY_PASS
@@ -16,6 +18,8 @@ before_install:
 
 install:
   - mvn -f $(pwd)/backend -PproductionServer install
+
+script:
   - docker-compose build
 
 after_success:
