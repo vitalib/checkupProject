@@ -15,6 +15,7 @@ before_install:
   - export SSH_CMD="sshpass -e ssh -p $DEPLOY_PORT -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
 
 install:
+  - mvn -f $(pwd)/backend -PproductionServer install
   - docker-compose build
 
 after_success:
